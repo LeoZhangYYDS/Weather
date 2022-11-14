@@ -22,16 +22,20 @@ const myKey = "c6838cc306630664ea3e7e947a7ea9bc";
 
 //pull data from weather api and show data on weather.ejs
 app.get("/response", async (req, res) => {
-  let { city } = req.query;
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${myKey}`;
-  let d = await fetch(url);
-  let djs = await d.json();
+  try {
+    let { city } = req.query;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${myKey}`;
+    let d = await fetch(url);
+    let djs = await d.json();
 
-  //use function to convert tempture to celsius
-  let kTemp = djs.main.temp;
-  let cTemp = kToC(kTemp);
-  console.log(djs);
-  res.render("weather.ejs", { djs, cTemp });
+    //use function to convert tempture to celsius
+    let kTemp = djs.main.temp;
+    let cTemp = kToC(kTemp);
+    console.log(djs);
+    res.render("weather.ejs", { djs, cTemp });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.listen(3000, () => {
