@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <%- include ("partials/header") %>
+    <title>Weather Checker App</title>
   </head>
   <body>
-    <h1>Weacher Checker</h1>
-    <form action="/response" method="GET">
-      <label for="city">City Name:</label>
-      <input type="text" id="city" name="city" />
-      <button id="button">Check</button>
-    </form>
+    <div class="bg-secondary text-white">
+      <div class="p1 bg-light text-dark">
+        <h1>Weacher Checker</h1>
+        <p>
+          Just enter city name or suburb name and press the "Check" button to
+          check the real-time weather
+        </p>
+        <form action="/response" method="GET">
+          <label for="city">City/Suburb Name:</label>
+          <input type="text" id="city" name="city" />
+          <button id="button" class="btn btn-primary">Check</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

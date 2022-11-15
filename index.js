@@ -17,7 +17,7 @@ function kToC(k) {
   return (k - 273.15).toFixed(2);
 }
 
-//api key
+//weather api key
 const myKey = "c6838cc306630664ea3e7e947a7ea9bc";
 
 //pull data from weather api and show data on weather.ejs
