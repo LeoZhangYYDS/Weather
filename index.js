@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const ejs = require("ejs");
 const fetch = require("node-fetch");
+const fs = require("fs");
 
 // middleware
 app.use(express.static("public"));
@@ -33,6 +34,15 @@ app.get("/response", async (req, res) => {
     let cTemp = kToC(kTemp);
     console.log(djs);
     res.render("weather.ejs", { djs, cTemp });
+
+    // Write data in 'weatherData.txt'
+    let data = JSON.stringify(djs);
+    fs.writeFile("weatherData.txt", data, (err) => {
+      // In case of a error throw err.
+      if (err) throw err;
+    });
+
+    //if any error,show error information
   } catch (err) {
     console.log(err);
   }
